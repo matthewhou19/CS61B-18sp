@@ -25,11 +25,22 @@ public class NBody {
     }
 
     public static void main(String[] args) {
+
         double T = Double.parseDouble(args[0]);
         double dt = Double.parseDouble(args[1]);
         String filename = args[2];
         Planet[] planets = readPlanets(filename);
         double radius = readRadius(filename);
+        StdDraw.setScale(radius / (-2), radius / 2);
+        String background = "images/starfield.jpg";
+        StdDraw.picture(0, 0, background);
+        for (Planet p : planets) {
+            p.draw();
+
+        }
+        StdDraw.show();
+        StdDraw.pause(1000);
+        // drawBackground();
 
     }
 
