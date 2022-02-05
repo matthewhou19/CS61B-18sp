@@ -5,8 +5,9 @@
 public class DebugExercise1 {
     public static int divideThenRound(int top, int bottom) {
         int quotient = top / bottom;
-        int result = Math.round(quotient);
-        return result;
+        int remain = top % bottom;
+        if (remain > bottom / 2) return quotient + 1;
+        return quotient;
     }
 
     public static void main(String[] args) {
