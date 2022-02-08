@@ -66,22 +66,40 @@ public class LinkedListDeque<T> {
         Node remain = sentinel.next.next;
         sentinel.next = remain;
         remain.pre = sentinel;
+        size--;
         return curr.item;
     }
 
     /** remove the last item */
     public T removeLast() {
         if (size == 0) return null;
-        return null;
+        Node curr = sentinel.pre;
+        Node remain = curr.pre;
+        sentinel.pre = remain;
+        remain.next = sentinel;
+        size--;
+        return curr.item;
     }
 
     /** get the ith item */
     public T get(int index) {
-        return null;
+        if (index < 0 || index >= size) return  null;
+        Node curr = sentinel.next;
+        while (index > 0) {
+            curr = curr.next;
+            index--;
+        }
+        return curr.item;
     }
 
     /** get the ith item by using a recursive way */
     public T getRecursive(int index) {
-        return null;
+        if (index < 0 || index >= size) return  null;
+        return getRecursiveHelper(sentinel.next, index);
+    }
+
+    private T getRecursiveHelper(Node curr, int index) {
+        if (index == 0) return  curr.item;
+        return  getRecursiveHelper(curr.next, index - 1);
     }
 }
