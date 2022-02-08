@@ -1,26 +1,45 @@
 /**Implement LinkedList based Double end Queue class*/
 public class LinkedListDeque<T> {
-    
+    /** nested Node class */
+    private static class Node<T>{
+        T item;
+        Node pre;
+        Node next;
 
+        public Node(T i){
+            item = i;
+            pre = null;
+            next = null;
+        }
+    }
 
+    Node sentinel;
+    int size;
 
-    /** Constructor */
+    /** Constructor
+     * 1. circular sentinel implementation
+     * 2. set size with 0
+     * */
     public LinkedListDeque() {
-
+        sentinel = new Node(0);
+        sentinel.pre = sentinel;
+        sentinel.next = sentinel;
+        size = 0;
     }
 
     /** return true if deque is empty*/
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     /** return Deque size with constant time */
     public int size() {
-        return 0;
+        return size;
     }
 
     /** add an item at  first */
     public void  addFirst(T item){
+        
 
     }
 
