@@ -44,14 +44,14 @@ public class ArrayDeque<T> {
             resize(capacity * FACTOR);
         }
         container[nextLast] = item;
-        nextLast = (nextLast + 1) % capacity;
+        nextLast = (nextLast + 1 + capacity) % capacity;
         size++;
     }
 
     /** remove the first item*/
     public T removeFirst() {
         if (size == 0) return null;
-        nextFirst = (nextFirst + 1)%capacity;
+        nextFirst = (nextFirst + 1 + capacity)%capacity;
         size--;
         double usage = (double)size/(double)capacity;
         if (usage < 0.25 && capacity >= 16) {
@@ -63,7 +63,7 @@ public class ArrayDeque<T> {
     /** remove the last item */
     public T removeLast() {
         if (size == 0) return null;
-        nextLast = (nextLast - 1)%capacity;
+        nextLast = (nextLast - 1 + capacity)%capacity;
         size--;
         double usage = (double)size/(double) capacity;
         if (usage < 0.25 && capacity >= 16) {
