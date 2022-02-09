@@ -1,4 +1,4 @@
-public class ArrayDeque {
+public class ArrayDeque<T> {
 
 
     public boolean isEmpty() {
@@ -7,18 +7,12 @@ public class ArrayDeque {
 
     /** return Deque size with constant time */
     public int size() {
-        return size;
+        return 0;
     }
 
     /** add an item at  first */
     public void  addFirst(T item){
-        LinkedListDeque.Node temp = sentinel.next;
-        LinkedListDeque.Node curr = new LinkedListDeque.Node(item);
-        curr.next = temp;
-        temp.pre = curr;
-        sentinel.next = curr;
-        curr.pre = sentinel;
-        size++;
+
     }
 
     /** add an item at last */
