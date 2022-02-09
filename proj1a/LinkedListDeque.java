@@ -60,7 +60,7 @@ public class LinkedListDeque<T> {
     }
 
     /** remove the first item*/
-    public T removeFist() {
+    public T removeFirst() {
         if (size == 0) return null;
         Node curr = sentinel.next;
         Node remain = sentinel.next.next;
@@ -101,5 +101,14 @@ public class LinkedListDeque<T> {
     private T getRecursiveHelper(Node curr, int index) {
         if (index == 0) return  curr.item;
         return  getRecursiveHelper(curr.next, index - 1);
+    }
+
+    public void printDeque() {
+        Node curr = sentinel.next;
+        while (curr != sentinel) {
+            System.out.print(curr.item);
+            System.out.print(' ');
+            curr = curr.next;
+        }
     }
 }
