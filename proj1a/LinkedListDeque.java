@@ -1,20 +1,20 @@
 /**Implement LinkedList based Double end Queue class*/
 public class LinkedListDeque<T> {
     /** nested Node class */
-    private class Node{
+    private class Node {
         T item;
         Node pre;
         Node next;
 
-        public Node(T i){
+        public Node(T i) {
             item = i;
             pre = null;
             next = null;
         }
     }
 
-    Node sentinel;
-    int size;
+    private Node sentinel;
+    private int size;
 
     /** Constructor
      * 1. circular sentinel implementation
@@ -38,7 +38,7 @@ public class LinkedListDeque<T> {
     }
 
     /** add an item at  first */
-    public void  addFirst(T item){
+    public void  addFirst(T item) {
         Node temp = sentinel.next;
         Node curr = new Node(item);
         curr.next = temp;
@@ -61,7 +61,9 @@ public class LinkedListDeque<T> {
 
     /** remove the first item*/
     public T removeFirst() {
-        if (size == 0) return null;
+        if (size == 0) {
+            return null;
+        }
         Node curr = sentinel.next;
         Node remain = sentinel.next.next;
         sentinel.next = remain;
@@ -72,7 +74,9 @@ public class LinkedListDeque<T> {
 
     /** remove the last item */
     public T removeLast() {
-        if (size == 0) return null;
+        if (size == 0)  {
+            return null;
+        }
         Node curr = sentinel.pre;
         Node remain = curr.pre;
         sentinel.pre = remain;
@@ -94,12 +98,16 @@ public class LinkedListDeque<T> {
 
     /** get the ith item by using a recursive way */
     public T getRecursive(int index) {
-        if (index < 0 || index >= size) return  null;
+        if (index < 0 || index >= size) {
+            return  null;
+        }
         return getRecursiveHelper(sentinel.next, index);
     }
 
     private T getRecursiveHelper(Node curr, int index) {
-        if (index == 0) return  curr.item;
+        if (index == 0) {
+            return  curr.item;
+        }
         return  getRecursiveHelper(curr.next, index - 1);
     }
 
