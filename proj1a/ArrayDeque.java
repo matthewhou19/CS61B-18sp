@@ -18,7 +18,6 @@ public class ArrayDeque<T> {
         size = 0;
     }
 
-
     /** return true if deque is empty*/
     public boolean isEmpty() {
         return  size == 0;
@@ -37,7 +36,7 @@ public class ArrayDeque<T> {
         container[nextFirst] = item;
         nextFirst = (capacity + nextFirst - 1) % capacity;
     }
-    
+
     /** add an item at last */
     public void  addLast(T item) {
         if (size == capacity) {
@@ -49,29 +48,42 @@ public class ArrayDeque<T> {
 
     /** remove the first item*/
     public T removeFirst() {
-        return null;
+        if (size == 0) return null;
+        nextFirst = (nextFirst + 1)/capacity;
+        size--;
+        double usage = (double)size/(double) capacity;
+        if (usage < 0.25 && capacity >= 16) {
+            resize(capacity/2);
+        }
+        return container[nextFirst];
     }
 
     /** remove the last item */
     public T removeLast() {
-
-        return null;
+        if (size == 0) return null;
+        nextLast = (nextLast - 1)/capacity;
+        size--;
+        double usage = (double)size/(double) capacity;
+        if (usage < 0.25 && capacity >= 16) {
+            resize(capacity/2);
+        }
+        return container[nextLast];
     }
 
     /** get the ith item */
     public T get(int index) {
-
-        return null;
+        return container[(nextFirst + 1 + index)/capacity];
     }
-
 
     /** print all the elements in the Deque*/
     public void printDeque() {
-
+        int j = nextFirst +1;
+        for (int i = 0; i < size; i++) {
+            System.out.print(container[j/capacity]);
+            System.out.print(" ");
+            j++;
+        }
     }
-
-    /**add the first when Deque is empty,no matter what direction*/
-
 
     /** resize the container */
     private void resize(int c) {
@@ -84,10 +96,8 @@ public class ArrayDeque<T> {
         }
         nextFirst = capacity - 1;
         nextLast = size;
+        capacity = c;
     }
-
-
-
 
 
 }
