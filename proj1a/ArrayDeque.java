@@ -53,11 +53,12 @@ public class ArrayDeque<T> {
         if (size == 0) return null;
         nextFirst = (nextFirst + 1 + capacity)%capacity;
         size--;
+        T item = container[nextFirst];
         double usage = (double)size/(double)capacity;
         if (usage < 0.25 && capacity >= 16) {
             resize(capacity/FACTOR);
         }
-        return container[nextFirst];
+        return item;
     }
 
     /** remove the last item */
@@ -65,11 +66,12 @@ public class ArrayDeque<T> {
         if (size == 0) return null;
         nextLast = (nextLast - 1 + capacity)%capacity;
         size--;
+        T item = container[nextLast];
         double usage = (double)size/(double) capacity;
         if (usage < 0.25 && capacity >= 16) {
             resize(capacity/FACTOR);
         }
-        return container[nextLast];
+        return item;
     }
 
     /** get the ith item */
