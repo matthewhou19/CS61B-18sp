@@ -29,7 +29,7 @@ public class ArrayDeque<T> {
     }
 
     /** add an item at  first */
-    public void  addFirst(T item){
+    public void  addFirst(T item) {
         if (size == capacity) {
             resize(capacity * FACTOR);
         }
@@ -50,38 +50,42 @@ public class ArrayDeque<T> {
 
     /** remove the first item*/
     public T removeFirst() {
-        if (size == 0) return null;
-        nextFirst = (nextFirst + 1 + capacity)%capacity;
+        if (size == 0) {
+            return null;
+        }
+        nextFirst = (nextFirst + 1 + capacity) % capacity;
         size--;
         T item = container[nextFirst];
-        double usage = (double)size/(double)capacity;
+        double usage = (double)size / (double)capacity;
         if (usage < 0.25 && capacity >= 16) {
-            resize(capacity/FACTOR);
+            resize(capacity / FACTOR);
         }
         return item;
     }
 
     /** remove the last item */
     public T removeLast() {
-        if (size == 0) return null;
-        nextLast = (nextLast - 1 + capacity)%capacity;
+        if (size == 0) {
+            return null;
+        }
+        nextLast = (nextLast - 1 + capacity) % capacity;
         size--;
         T item = container[nextLast];
-        double usage = (double)size/(double) capacity;
+        double usage = (double)size / (double) capacity;
         if (usage < 0.25 && capacity >= 16) {
-            resize(capacity/FACTOR);
+            resize(capacity / FACTOR);
         }
         return item;
     }
 
     /** get the ith item */
     public T get(int index) {
-        return container[(nextFirst + 1 + index)%capacity];
+        return container[(nextFirst + 1 + index) % capacity];
     }
 
     /** print all the elements in the Deque*/
     public void printDeque() {
-        int j = nextFirst +1;
+        int j = nextFirst + 1;
         for (int i = 0; i < size; i++) {
             System.out.print(container[j % capacity]);
             System.out.print(" ");
