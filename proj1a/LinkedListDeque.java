@@ -87,7 +87,9 @@ public class LinkedListDeque<T> {
 
     /** get the ith item */
     public T get(int index) {
-        if (index < 0 || index >= size) return  null;
+        if (index < 0 || index >= size) {
+            return  null;
+        }
         Node curr = sentinel.next;
         while (index > 0) {
             curr = curr.next;

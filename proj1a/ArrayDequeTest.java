@@ -28,7 +28,7 @@ public class ArrayDequeTest {
         for (int j = 0; j < 10; j++) {
             System.out.println(ad.removeLast());
         }
-       System.out.println(ad.size());
+        System.out.println(ad.size());
         for (int j = 0; j < 10; j++) {
             ad.addLast(j);
         }
