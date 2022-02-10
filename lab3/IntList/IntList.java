@@ -253,5 +253,9 @@ public class IntList {
         out.format(")");
         return out.toString();
     }
+
+    public static IntList reverse(IntList A) {
+        return null;
+    }
 }
 

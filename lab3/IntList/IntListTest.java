@@ -67,9 +67,18 @@ public class IntListTest {
     }
 
 
-    @Test
+    @Test(timeout = 1000)
     public void testReverse() {
-        
+        IntList A = IntList.of(1, 2, 3, 4);
+        IntList B = IntList.reverse(A);
+        IntList C = IntList.of(4, 3, 2, 1);
+        assertNotEquals(A, B);
+        assertEquals(B, C);
+        A = null;
+        B = IntList.reverse(A);
+        assertEquals(A, B);
+
+
     }
 
     /** If you're running this from the command line, you'll need
