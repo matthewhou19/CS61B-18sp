@@ -255,7 +255,14 @@ public class IntList {
     }
 
     public static IntList reverse(IntList A) {
-        return null;
+        if (A == null || A.rest == null) {
+            return A;
+        }
+        IntList tail = A.rest;
+        IntList remain = reverse(A.rest);
+        tail.rest = A;
+        A.rest = null;
+        return remain;
     }
 }
 
