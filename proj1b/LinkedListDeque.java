@@ -116,7 +116,7 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         }
         return  getRecursiveHelper(curr.next, index - 1);
     }
-    
+
     @Override
     public void printDeque() {
         Node curr = sentinel.next;
