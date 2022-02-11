@@ -28,16 +28,16 @@ public class LinkedListDeque<Item> implements Deque<Item>{
     }
 
     /** return true if deque is empty*/
-    public boolean isEmpty() {
-        return size == 0;
-    }
+
 
     /** return Deque size with constant time */
+    @Override
     public int size() {
         return size;
     }
 
     /** add an item at  first */
+    @Override
     public void  addFirst(Item item) {
         Node temp = sentinel.next;
         Node curr = new Node(item);
@@ -49,6 +49,7 @@ public class LinkedListDeque<Item> implements Deque<Item>{
     }
 
     /** add an item at last */
+    @Override
     public void  addLast(Item item) {
         Node temp = sentinel.pre;
         Node curr = new Node(item);
@@ -60,6 +61,7 @@ public class LinkedListDeque<Item> implements Deque<Item>{
     }
 
     /** remove the first item*/
+    @Override
     public Item removeFirst() {
         if (size == 0) {
             return null;
@@ -73,6 +75,7 @@ public class LinkedListDeque<Item> implements Deque<Item>{
     }
 
     /** remove the last item */
+    @Override
     public Item removeLast() {
         if (size == 0)  {
             return null;
@@ -86,6 +89,7 @@ public class LinkedListDeque<Item> implements Deque<Item>{
     }
 
     /** get the ith item */
+    @Override
     public Item get(int index) {
         if (index < 0 || index >= size) {
             return  null;
@@ -112,7 +116,8 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         }
         return  getRecursiveHelper(curr.next, index - 1);
     }
-
+    
+    @Override
     public void printDeque() {
         Node curr = sentinel.next;
         while (curr != sentinel) {

@@ -19,16 +19,17 @@ public class ArrayDeque<Item> implements Deque<Item> {
     }
 
     /** return true if deque is empty*/
-    public boolean isEmpty() {
-        return  size == 0;
-    }
+
+
 
     /** return Deque size with constant time */
+    @Override
     public int size() {
         return size;
     }
 
     /** add an item at  first */
+    @Override
     public void  addFirst(Item item) {
         if (size == capacity) {
             resize(capacity * FACTOR);
@@ -39,6 +40,7 @@ public class ArrayDeque<Item> implements Deque<Item> {
     }
 
     /** add an item at last */
+    @Override
     public void  addLast(Item item) {
         if (size == capacity) {
             resize(capacity * FACTOR);
@@ -49,6 +51,7 @@ public class ArrayDeque<Item> implements Deque<Item> {
     }
 
     /** remove the first item*/
+    @Override
     public Item removeFirst() {
         if (size == 0) {
             return null;
@@ -64,6 +67,7 @@ public class ArrayDeque<Item> implements Deque<Item> {
     }
 
     /** remove the last item */
+    @Override
     public Item removeLast() {
         if (size == 0) {
             return null;
@@ -79,11 +83,13 @@ public class ArrayDeque<Item> implements Deque<Item> {
     }
 
     /** get the ith item */
+    @Override
     public Item get(int index) {
         return container[(nextFirst + 1 + index) % capacity];
     }
 
     /** print all the elements in the Deque*/
+    @Override
     public void printDeque() {
         int j = nextFirst + 1;
         for (int i = 0; i < size; i++) {
