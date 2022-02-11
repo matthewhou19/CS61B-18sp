@@ -1,18 +1,18 @@
-public class ArrayDeque<T> {
+public class ArrayDeque<Item> implements Deque<Item> {
     private static final int STARTERSIZE = 8;
     private static final int FACTOR = 2;
     /** For arrays of length 16 or more, your usage factor
      * should always be at least 25%. For smaller arrays,
      * your usage factor can be arbitrarily low. */
     private int capacity;
-    private T[] container;
+    private Item[] container;
     private int nextFirst;
     private int nextLast;
     private int size;
     /** Constructor*/
     public ArrayDeque() {
         capacity = STARTERSIZE;
-        container = (T[]) new Object[capacity];
+        container = (Item[]) new Object[capacity];
         nextFirst = 0;
         nextLast = 1;
         size = 0;
@@ -29,7 +29,7 @@ public class ArrayDeque<T> {
     }
 
     /** add an item at  first */
-    public void  addFirst(T item) {
+    public void  addFirst(Item item) {
         if (size == capacity) {
             resize(capacity * FACTOR);
         }
@@ -39,7 +39,7 @@ public class ArrayDeque<T> {
     }
 
     /** add an item at last */
-    public void  addLast(T item) {
+    public void  addLast(Item item) {
         if (size == capacity) {
             resize(capacity * FACTOR);
         }
@@ -49,13 +49,13 @@ public class ArrayDeque<T> {
     }
 
     /** remove the first item*/
-    public T removeFirst() {
+    public Item removeFirst() {
         if (size == 0) {
             return null;
         }
         nextFirst = (nextFirst + 1 + capacity) % capacity;
         size--;
-        T item = container[nextFirst];
+        Item item = container[nextFirst];
         double usage = (double) size / (double) capacity;
         if (usage < 0.25 && capacity >= 16) {
             resize(capacity / FACTOR);
@@ -64,13 +64,13 @@ public class ArrayDeque<T> {
     }
 
     /** remove the last item */
-    public T removeLast() {
+    public Item removeLast() {
         if (size == 0) {
             return null;
         }
         nextLast = (nextLast - 1 + capacity) % capacity;
         size--;
-        T item = container[nextLast];
+        Item item = container[nextLast];
         double usage = (double) size / (double) capacity;
         if (usage < 0.25 && capacity >= 16) {
             resize(capacity / FACTOR);
@@ -79,7 +79,7 @@ public class ArrayDeque<T> {
     }
 
     /** get the ith item */
-    public T get(int index) {
+    public Item get(int index) {
         return container[(nextFirst + 1 + index) % capacity];
     }
 
@@ -95,8 +95,8 @@ public class ArrayDeque<T> {
 
     /** resize the container */
     private void resize(int c) {
-        T[] origin = container;
-        container = (T[]) new Object[c];
+        Item[] origin = container;
+        container = (Item[]) new Object[c];
         int j = nextFirst + 1;
         for (int i = 0; i < size; i++) {
             container[i] = origin[j % capacity];
