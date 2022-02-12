@@ -1,6 +1,5 @@
 import org.junit.Test;
 
-import java.time.OffsetDateTime;
 
 import static org.junit.Assert.*;
 
@@ -32,7 +31,7 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testIsPalindromeCC(){
+    public void testIsPalindromeCC() {
         assertTrue(palindrome.isPalindrome("flake", ob1));
         assertFalse(palindrome.isPalindrome("deified", ob1));
         assertTrue(palindrome.isPalindrome("", ob1));

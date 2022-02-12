@@ -2,7 +2,7 @@
 
 public class Palindrome {
     /**return a deque from a string, use same order!  */
-    public Deque<Character> wordToDeque(String word){
+    public Deque<Character> wordToDeque(String word) {
         Deque<Character> dq = new LinkedListDeque<>();
         for (int i = 0; i < word.length(); i++) {
             dq.addLast(word.charAt(i));
@@ -11,7 +11,7 @@ public class Palindrome {
     }
 
     public  boolean isPalindrome(String word) {
-        Deque<Character> dq= wordToDeque(word);
+        Deque<Character> dq = wordToDeque(word);
         while (dq.size() > 1) {
             char a = dq.removeFirst();
             char b = dq.removeLast();
@@ -23,7 +23,7 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
-        Deque<Character> dq= wordToDeque(word);
+        Deque<Character> dq = wordToDeque(word);
         while (dq.size() > 1) {
             char a = dq.removeFirst();
             char b = dq.removeLast();

@@ -1,5 +1,5 @@
 /**Implement LinkedList based Double end Queue class*/
-public class LinkedListDeque<Item> implements Deque<Item>{
+public class LinkedListDeque<Item> implements Deque<Item> {
     /** nested Node class */
     private class Node {
         Item item;
