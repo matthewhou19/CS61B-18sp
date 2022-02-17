@@ -37,7 +37,8 @@ public class ArrayRingBuffer<T>  extends AbstractBoundedQueue<T> {
      * covered Monday.
      */
     public T dequeue() {
-        // TODO: Dequeue the first item. Don't forget to decrease fillCount and update 
+        // TODO: Dequeue the first item. Don't forget to decrease fillCount and update
+        return null;
     }
 
     /**
@@ -45,6 +46,7 @@ public class ArrayRingBuffer<T>  extends AbstractBoundedQueue<T> {
      */
     public T peek() {
         // TODO: Return the first item. None of your instance variables should change.
+        return null;
     }
 
     // TODO: When you get to part 5, implement the needed code to support iteration.
