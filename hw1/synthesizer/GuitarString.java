@@ -14,15 +14,27 @@ public class GuitarString {
 
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
+        double cap = SR / frequency;
+        int capcity = (int) Math.round(cap);
+        buffer = new ArrayRingBuffer<Double>(capcity);
+        for (int i = 0; i < capcity; i++) {
+            buffer.enqueue(0.0);
+        }
         // TODO: Create a buffer with capacity = SR / frequency. You'll need to
         //       cast the result of this divsion operation into an int. For better
         //       accuracy, use the Math.round() function before casting.
         //       Your buffer should be initially filled with zeros.
+
     }
 
 
     /* Pluck the guitar string by replacing the buffer with white noise. */
     public void pluck() {
+        for ( int i = 0; i < buffer.capacity(); i++) {
+            buffer.dequeue();
+            double r = Math.random() - 0.5;
+            buffer.enqueue(r);
+        }
         // TODO: Dequeue everything in the buffer, and replace it with random numbers
         //       between -0.5 and 0.5. You can get such a number by using:
         //       double r = Math.random() - 0.5;
@@ -34,6 +46,10 @@ public class GuitarString {
      * the Karplus-Strong algorithm. 
      */
     public void tic() {
+        double r1 = buffer.dequeue();
+        double r2 = buffer.peek();
+        double r3 = DECAY * (r1 + r2) / 2;
+        buffer.enqueue(r3);
         // TODO: Dequeue the front sample and enqueue a new sample that is
         //       the average of the two multiplied by the DECAY factor.
         //       Do not call StdAudio.play().
@@ -42,6 +58,6 @@ public class GuitarString {
     /* Return the double at the front of the buffer. */
     public double sample() {
         // TODO: Return the correct thing.
-        return 0;
+        return buffer.peek();
     }
 }
