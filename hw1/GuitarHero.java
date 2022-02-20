@@ -12,9 +12,9 @@ public class GuitarHero {
         for (int i = 0; i < 37; i++) {
             CONCERTS[i] = CONCERT_A * Math.pow(2, (i - 24) / 12);
         }
-        GuitarString[] GSS = new GuitarString[37];
+        GuitarString[] gSS = new GuitarString[37];
         for (int i = 0; i < 37; i++) {
-            GSS[i] = new GuitarString(CONCERTS[i]);
+            gSS[i] = new GuitarString(CONCERTS[i]);
         }
 
         String keyboard = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
@@ -26,12 +26,12 @@ public class GuitarHero {
             if (StdDraw.hasNextKeyTyped()) {
                 char key = StdDraw.nextKeyTyped();
                 int index = keyboard.indexOf(key);
-                GSS[index].pluck();
+                gSS[index].pluck();
             }
 
             /* compute the superposition of samples */
             double sample = 0.0;
-            for (GuitarString gs : GSS) {
+            for (GuitarString gs : gSS) {
                 sample = gs.sample() + sample;
             }
 
@@ -39,7 +39,7 @@ public class GuitarHero {
             StdAudio.play(sample);
 
             /* advance the simulation of each guitar string by one step */
-            for (GuitarString gs : GSS) {
+            for (GuitarString gs : gSS) {
                 gs.tic();
             }
         }
