@@ -33,7 +33,6 @@ public class ArrayRingBuffer<T>  extends AbstractBoundedQueue<T> {
         rb[last] = x;
         last = (last + 1) % capacity;
         fillCount++;
-        // TODO: Enqueue the item. Don't forget to increase fillCount and update last.
     }
 
     /**
@@ -56,16 +55,19 @@ public class ArrayRingBuffer<T>  extends AbstractBoundedQueue<T> {
      * Return oldest item, but don't remove it.
      */
     public T peek() {
+        if (isEmpty()) {
+            throw  new RuntimeException("Ring Buffer Underflow");
+        }
         return rb[first];
     }
 
 
     @Override
     public Iterator<T> iterator() {
-        return new rbIterator();
+        return new RbIterator();
     }
 
-    private class rbIterator implements Iterator<T> {
+    private class RbIterator implements Iterator<T> {
         int index = first;
         @Override
         public boolean hasNext() {
