@@ -10,8 +10,8 @@ import java.sql.PreparedStatement;
  *  Draws a world that is mostly empty except for a small region.
  */
 public class BoringWorldDemo {
-    private static final int WIDTH = 60;
-    private static final int HEIGHT = 30;
+    private static final int WIDTH = 100;
+    private static final int HEIGHT = 60;
 
     public static void main(String[] args) {
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
@@ -26,7 +26,7 @@ public class BoringWorldDemo {
             }
         }
         Position p = new Position(10, 5);
-        HexWorld.addHexagon(world, p, 2, Tileset.FLOWER);
+        HexWorld.creatHex(world, p, 3);
         // fills in a block 14 tiles wide by 4 tiles tall
 
 
