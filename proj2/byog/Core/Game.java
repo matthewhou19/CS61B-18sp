@@ -40,6 +40,10 @@ public class Game {
 
         roomDemo.draw(world);
 
+        Room randomPositionRoom = new Room();
+        randomPositionRoom.randomPositionCreate(WIDTH, HEIGHT, random);
+        randomPositionRoom.draw(world);
+
 
         // draws the world to the screen
         ter.renderFrame(world);

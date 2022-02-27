@@ -16,8 +16,9 @@ public class Room implements container{
     }
 
     //create a random size room in the random position
-    public void randomPositionCreate(){
-
+    public void randomPositionCreate(int xScale, int yScale, Random random){
+        randomCreate(random);
+        p = Position.randomPosition(xScale - width, yScale - height, random);
     }
 
 
