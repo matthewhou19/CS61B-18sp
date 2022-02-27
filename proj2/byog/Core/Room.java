@@ -27,8 +27,8 @@ public class Room implements container{
     // create a room with random size at the Position l
     private void randomCreate(Random random){
         r = random;
-        width = RandomUtils.uniform(random, 3, 8);
-        height = RandomUtils.uniform(random, 3, 5);
+        width = RandomUtils.uniform(random, 3, 9);
+        height = RandomUtils.uniform(random, 3, 7);
         mirror = new int[width][height];
         for (int i = 0; i < mirror.length; i++) {
             for (int j = 0; j < mirror[0].length; j++) {
