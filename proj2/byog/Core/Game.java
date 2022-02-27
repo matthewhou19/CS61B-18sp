@@ -2,18 +2,54 @@ package byog.Core;
 
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
+import byog.TileEngine.Tileset;
+import byog.Core.Position;
+
+import java.util.Random;
 
 public class Game {
     TERenderer ter = new TERenderer();
     /* Feel free to change the width and height. */
     public static final int WIDTH = 80;
-    public static final int HEIGHT = 30;
+    public static final int HEIGHT = 60;
+    Random random;
 
     /**
      * Method used for playing a fresh game. The game should start from the main menu.
      */
     public void playWithKeyboard() {
+        random = new Random(3567);
+        TileMap map = new TileMap();
+
+        TERenderer ter = new TERenderer();
+        ter.initialize(WIDTH, HEIGHT);
+
+        // initialize tiles
+        TETile[][] world = new TETile[WIDTH][HEIGHT];
+        for (int x = 0; x < WIDTH; x += 1) {
+            for (int y = 0; y < HEIGHT; y += 1) {
+                world[x][y] = Tileset.NOTHING;
+            }
+        }
+
+
+        Position p = new Position(10, 5);
+        Room roomDemo= new Room();
+
+        roomDemo.specificCreate(p, random);
+
+        roomDemo.draw(world);
+
+
+        // draws the world to the screen
+        ter.renderFrame(world);
     }
+
+
+
+
+
+
 
     /**
      * Method used for autograding and testing the game code. The input string will be a series
