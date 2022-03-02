@@ -12,7 +12,7 @@ public class Game {
     /* Feel free to change the width and height. */
     public static final int WIDTH = 80;
     public static final int HEIGHT = 60;
-    Random random;
+    private Random random;
 
     /**
      * Method used for playing a fresh game. The game should start from the main menu.
