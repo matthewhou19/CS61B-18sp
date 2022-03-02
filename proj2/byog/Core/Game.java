@@ -8,46 +8,35 @@ import byog.Core.Position;
 import java.util.Random;
 
 public class Game {
-    TERenderer ter = new TERenderer();
+
     /* Feel free to change the width and height. */
     public static final int WIDTH = 80;
     public static final int HEIGHT = 60;
-    private Random random;
+    public static final int seed = 3567;
 
     /**
      * Method used for playing a fresh game. The game should start from the main menu.
      */
     public void playWithKeyboard() {
-        random = new Random(3567);
-        TileMap map = new TileMap();
+        Random random = new Random(3567);
+
+
 
         TERenderer ter = new TERenderer();
         ter.initialize(WIDTH, HEIGHT);
 
+
+        WorldGenerator wg = new WorldGenerator();
+        wg.instantiate(seed, WIDTH, HEIGHT);
+        TETile[][] world = wg.getWorld();
+
+
         // initialize tiles
-        TETile[][] world = new TETile[WIDTH][HEIGHT];
-        for (int x = 0; x < WIDTH; x += 1) {
-            for (int y = 0; y < HEIGHT; y += 1) {
-                world[x][y] = Tileset.NOTHING;
-            }
-        }
 
 
-        Position p = new Position(10, 5);
-        Room roomDemo= new Room();
 
-        roomDemo.specificCreate(p, random);
 
-        roomDemo.draw(world);
 
-        Room randomPositionRoom = new Room();
-        randomPositionRoom.randomPositionCreate(WIDTH, HEIGHT, random);
-        randomPositionRoom.draw(world);
-
-        for(int i = 0; i < 10; i++) {
-            randomPositionRoom.randomPositionCreate(WIDTH, HEIGHT, random);
-            randomPositionRoom.draw(world);
-        }
 
 
         // draws the world to the screen
