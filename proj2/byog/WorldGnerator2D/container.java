@@ -1,4 +1,4 @@
-package byog.Core;
+package byog.WorldGnerator2D;
 
 import byog.TileEngine.TETile;
 

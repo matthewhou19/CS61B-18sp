@@ -2,8 +2,7 @@ package byog.Core;
 
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
-import byog.TileEngine.Tileset;
-import byog.Core.Position;
+import byog.WorldGnerator2D.WorldGenerator;
 
 import java.util.Random;
 

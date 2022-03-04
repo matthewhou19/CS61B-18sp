@@ -1,5 +1,6 @@
-package byog.Core;
+package byog.WorldGnerator2D;
 
+import byog.Core.RandomUtils;
 import byog.TileEngine.TETile;
 import java.util.Random;
 

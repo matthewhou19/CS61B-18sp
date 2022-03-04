@@ -1,6 +1,7 @@
-package byog.Core;
+package byog.WorldGnerator2D;
 
-import java.awt.*;
+import byog.Core.RandomUtils;
+
 import java.util.Random;
 
 public class Position {

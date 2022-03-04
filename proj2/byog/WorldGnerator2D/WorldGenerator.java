@@ -1,4 +1,4 @@
-package byog.Core;
+package byog.WorldGnerator2D;
 
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
@@ -10,7 +10,7 @@ public class WorldGenerator {
     private TETile[][] world;
     private int WIDTH;
     private int HEIGHT;
-    public void instantiate(int s, int w, int h) {
+    public void instantiate(long s, int w, int h) {
         random = new Random(s);
         WIDTH = w;
         HEIGHT = h;
