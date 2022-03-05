@@ -21,13 +21,7 @@ public class Game {
 
 
 
-        TERenderer ter = new TERenderer();
-        ter.initialize(WIDTH, HEIGHT);
 
-
-        WorldGenerator wg = new WorldGenerator();
-        wg.instantiate(seed, WIDTH, HEIGHT);
-        TETile[][] world = wg.getWorld();
 
 
         // initialize tiles
@@ -39,7 +33,7 @@ public class Game {
 
 
         // draws the world to the screen
-        ter.renderFrame(world);
+        
     }
 
 
