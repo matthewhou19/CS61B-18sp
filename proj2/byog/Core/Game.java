@@ -2,7 +2,7 @@ package byog.Core;
 
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
-import byog.WorldGnerator2D.WorldGenerator;
+
 
 import java.util.Random;
 
@@ -33,7 +33,7 @@ public class Game {
 
 
         // draws the world to the screen
-        
+
     }
 
 
