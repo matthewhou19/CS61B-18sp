@@ -49,6 +49,7 @@ private final String filepath;
 ##### TETile[][]
 
 * `public static TETile[][] copyOf(TETile[][] tiles)`
+* `public static String toString(TETile[][] world)`
 
 ##### Others
 
