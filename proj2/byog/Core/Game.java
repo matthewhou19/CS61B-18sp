@@ -1,6 +1,5 @@
 package byog.Core;
 
-import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 
 
@@ -77,7 +76,7 @@ public class Game {
 
         System.out.println(seed);
 
-        worldGenerator wg = new worldGenerator(seed, WIDTH, HEIGHT);
+        WorldGenerator wg = new WorldGenerator(seed, WIDTH, HEIGHT);
 
         TETile[][] finalWorldFrame = wg.outputWorld();
 

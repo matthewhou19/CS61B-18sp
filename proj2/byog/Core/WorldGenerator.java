@@ -5,18 +5,28 @@ import byog.TileEngine.Tileset;
 
 import java.util.Random;
 
-public class worldGenerator {
+public class WorldGenerator {
     private Random random;
     private int width;
     private int height;
-    TETile[][] world;
+    private TETile[][] world;
 
-    public worldGenerator(long seed, int width, int height) {
+
+
+    public WorldGenerator(long seed, int width, int height, TETile t) {
         this.width = width;
         this.height = height;
         this.random = new Random(seed);
         world = new TETile[width][height];
-        cleanWorldWith(Tileset.FLOWER);
+        cleanWorldWith(t);
+    }
+
+    public WorldGenerator(long seed, int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.random = new Random(seed);
+        world = new TETile[width][height];
+        cleanWorldWith(Tileset.NOTHING);
     }
 
     public void randomBSPWorld() {
