@@ -77,10 +77,15 @@ public class Game {
 
         System.out.println(seed);
 
+        worldGenerator wg = new worldGenerator(seed, WIDTH, HEIGHT);
+
+        TETile[][] finalWorldFrame = wg.outputWorld();
+
+        wg.randomBSPWorld();
+
+       finalWorldFrame = wg.outputWorld();
 
 
-
-        TETile[][] finalWorldFrame = null;
         return finalWorldFrame;
     }
 }
