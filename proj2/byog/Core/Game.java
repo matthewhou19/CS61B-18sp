@@ -58,6 +58,24 @@ public class Game {
         // TODO: Fill out this method to run the game using the input passed in,
         // and return a 2D tile representation of the world that would have been
         // drawn if the same inputs had been given to playWithKeyboard().
+        char f = input.charAt(0);
+        if (f != 'n' && f != 'N') {
+            throw new IllegalArgumentException("Input string must start with character N or n !");
+        }
+        long seed = 0;
+        for (int i = 1; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (c == 's' || c == 'S') {
+                break;
+            } else if (c <= '9' && c >= '0') {
+                seed = seed * 10 + (c - '0');
+            } else {
+                throw new IllegalArgumentException("Input must be a string of the format “N#######S” !");
+            }
+        }
+
+
+        System.out.println(seed);
 
         TETile[][] finalWorldFrame = null;
         return finalWorldFrame;
