@@ -23,10 +23,7 @@ public class Position {
         if (x == null) return false;
         if (x.getClass() != this.getClass()) return false;
         Position a = (Position) x;
-        if (a.getX() == this.getX() && a.getY() == this.getY()) {
-            return true;
-        }
-        return false;
+        return a.getX() == this.getX() && a.getY() == this.getY();
     }
 
     @Override
