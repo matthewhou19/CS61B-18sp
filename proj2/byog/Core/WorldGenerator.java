@@ -29,6 +29,11 @@ public class WorldGenerator {
         cleanWorldWith(Tileset.NOTHING);
     }
 
+    /**
+     * TODO  COMPLETE THE randomBSPWorld method : use BSP ALGO to generator a random world
+     */
+
+
     public void randomBSPWorld() {
         cleanWorldWith(Tileset.MOUNTAIN);
     }
@@ -55,4 +60,11 @@ public class WorldGenerator {
     public TETile[][] outputWorld(){
         return world;
     }
+
+    public static void main(String[] args) {
+        int seed = 14566;
+
+    }
+
+
 }
