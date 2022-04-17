@@ -82,7 +82,7 @@ public class Game {
 
         wg.randomBSPWorld();
 
-       finalWorldFrame = wg.outputWorld();
+        finalWorldFrame = wg.outputWorld();
 
 
         return finalWorldFrame;
