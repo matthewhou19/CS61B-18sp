@@ -62,3 +62,27 @@ private final int y;
 * `public position randmomPosition(Random random, int x1, int x2, int y1, int y2)`;
 * `public position randomPosition(int w, int y);`
 * `public position randmomPosition(int x1, int x2, int y1, int y2)`;
+
+### class Room
+
+#### private variable
+
+```java
+private final Position p;
+private final int width;
+private final int height;
+private final TETile t;
+```
+
+#### Constructor
+
+* `public Room(Position p, int width, int height);`
+* `public Room(Position p, int width, int height, TETile T);`
+
+#### Others
+
+* `public int getHeight();`
+* `public int getWidth();`
+* `public Position getPosition();`
+* `public int getArea();`
+* `public Map<Position, TETile> output();`

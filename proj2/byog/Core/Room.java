@@ -9,12 +9,20 @@ public class Room implements Element{
     private final Position p;
     private final int width;
     private final int height;
-    private final TETile terrain = Tileset.FLOOR;
+    private final TETile t;
 
     public Room(Position p, int width, int height) {
         this.p = p;
         this.width = width;
         this.height = height;
+        this.t = Tileset.FLOOR;
+    }
+
+    public Room(Position p, int width, int height, TETile T) {
+        this.p = p;
+        this.width = width;
+        this.height = height;
+        this.t = T;
     }
 
     public int getHeight() {
@@ -27,6 +35,10 @@ public class Room implements Element{
 
     public Position getPosition() {
         return p;
+    }
+
+    public int getArea(){
+        return height * width;
     }
 
 
