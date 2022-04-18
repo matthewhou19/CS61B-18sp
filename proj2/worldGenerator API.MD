@@ -58,5 +58,7 @@ private final int y;
 * `public int getY()`
 * `public boolean equals(Object x)`
 * `public int hashCode()`
+* `public position randomPosition(Random random, int w, int y);`
+* `public position randmomPosition(Random random, int x1, int x2, int y1, int y2)`;
 * `public position randomPosition(int w, int y);`
 * `public position randmomPosition(int x1, int x2, int y1, int y2)`;
