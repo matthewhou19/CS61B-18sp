@@ -1,5 +1,6 @@
 package byog.Core;
 
+import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
@@ -35,7 +36,7 @@ public class WorldGenerator {
 
 
     public void randomBSPWorld() {
-        cleanWorldWith(Tileset.MOUNTAIN);
+        cleanWorldWith(Tileset.FLOWER);
     }
 
 
@@ -62,9 +63,23 @@ public class WorldGenerator {
     }
 
     public static void main(String[] args) {
-        int seed = 14566;
+        long seed = 14566;
+        int w = 80;
+        int h = 50;
+        TETile t = Tileset.MOUNTAIN;
 
+        //WorldGenerator wg = new WorldGenerator(seed, w, h, t);
+        WorldGenerator wg = new WorldGenerator(seed, w, h);
+        wg.randomBSPWorld();
+
+        TETile[][] world = wg.outputWorld();
+
+        TERenderer ter = new TERenderer();
+        ter.initialize(w, h);
+        ter.renderFrame(world);
     }
+
+
 
 
 }
