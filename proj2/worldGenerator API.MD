@@ -33,6 +33,7 @@ private TETile[][] world;
 #### Generating ALGO
 
 * `public void randomBSPWorld()`  use BSP ALGO to generator a random world
+* `public void addElements(Element e); `  add an element to the world
 
 #### Others
 
@@ -72,6 +73,7 @@ private final Position p;
 private final int width;
 private final int height;
 private final TETile t;
+private final static int off = 2;
 ```
 
 #### Constructor
@@ -86,3 +88,5 @@ private final TETile t;
 * `public Position getPosition();`
 * `public int getArea();`
 * `public Map<Position, TETile> output();`
+* `public static Room randomRoom(Random random, Position sp, int w, int h);`
+* `public static Room randomRoom(Position sp, int w, int h);`

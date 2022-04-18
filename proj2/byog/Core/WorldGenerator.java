@@ -4,6 +4,7 @@ import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
+import java.util.*;
 import java.util.Random;
 
 public class WorldGenerator {
@@ -55,6 +56,13 @@ public class WorldGenerator {
         cleanWorldWith(Tileset.NOTHING);
     }
 
+    public void addElements(Element e) {
+        if (e == null) return;
+        Map<Position, TETile> map = e.output();
+        for (Position p : map.keySet()) {
+            world[p.getX()][p.getY()] = map.get(p);
+        }
+    }
 
     /**  return a TETILE[][]
     */
