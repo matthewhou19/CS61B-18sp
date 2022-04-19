@@ -38,6 +38,7 @@ private TETile[][] world;
 #### Others
 
 * `public TETile[][] outputWorld();` return the world as a TETILE[][]
+* `public Random getRandom();`
 * `public static void main(String[] args);` for test
 
 ### class Position
@@ -90,3 +91,49 @@ private final static int off = 2;
 * `public Map<Position, TETile> output();`
 * `public static Room randomRoom(Random random, Position sp, int w, int h);`
 * `public static Room randomRoom(Position sp, int w, int h);`
+
+### class Path
+
+#### private variable
+
+```java
+Set<Position> set;
+TETile t;
+```
+
+#### Constructor
+
+* `public Path(Position p1, Position p2);`
+* `public Path(Position p1, Position p2, TETile t);`
+
+#### Others
+
+* `public Position getKeyPoint(Random random);`
+* `public Map<Position, TETile> output();`
+
+
+
+### class BinarySpacePartition
+
+#### private variable
+
+```java
+private int width;
+private int hight;
+private BinarySpacePartition left;
+private BinarySpacePartition right;
+private final static int minSpace = 6;
+private Position p;
+private Path path;
+private Room room;
+private Random random;
+```
+
+#### Constructor
+
+* `public BinarySpacePartition(Random random, int w, int h);`
+
+
+#### Others
+
+* `public List<Room> getAllRooms();`

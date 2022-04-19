@@ -42,7 +42,11 @@ public class WorldGenerator {
 
 
     public void randomBSPWorld() {
-        cleanWorldWith(Tileset.FLOWER);
+        BinarySpacePartition bsp = new BinarySpacePartition(random, new Position(0, 0), width, height);
+        List<Room> listOfRooms = bsp.getAllRooms();
+        for (Room room : listOfRooms) {
+            addElements(room);
+        }
     }
 
 
@@ -92,8 +96,4 @@ public class WorldGenerator {
         ter.initialize(w, h);
         ter.renderFrame(world);
     }
-
-
-
-
 }

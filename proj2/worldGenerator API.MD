@@ -98,6 +98,7 @@ private final static int off = 2;
 
 ```java
 Set<Position> set;
+TETile t;
 ```
 
 #### Constructor
@@ -109,3 +110,30 @@ Set<Position> set;
 
 * `public Position getKeyPoint(Random random);`
 * `public Map<Position, TETile> output();`
+
+
+
+### class BinarySpacePartition
+
+#### private variable
+
+```java
+private int width;
+private int hight;
+private BinarySpacePartition left;
+private BinarySpacePartition right;
+private final static int minSpace = 6;
+private Position p;
+private Path path;
+private Room room;
+private Random random;
+```
+
+#### Constructor
+
+* `public BinarySpacePartition(Random random, int w, int h);`
+
+
+#### Others
+
+* `public List<Room> getAllRooms();`

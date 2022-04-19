@@ -48,7 +48,7 @@ public class Room implements Element{
 
     // TODO
     public static Room randomRoom(Random random, Position sp, int w, int h)  {
-        if (w <= off * 4 || h <= off * 4) return null;
+        if (w <= off * 3 || h <= off * 3) return null;
         Position p = Position.randomPosition(random, sp.getX() + off, sp.getX() + w/2 - off, sp.getY() + off, sp.getY() + h/2 - off );
         int width = RandomUtils.uniform(random, off, w - 2 * off - p.getX());
         int hight = RandomUtils.uniform(random, off, h  - 2 * off - p.getY());
@@ -80,7 +80,7 @@ public class Room implements Element{
     /** test for the room class
        */
     public static void main(String[] args) {
-        long seed = 2210000;
+        long seed = 221000;
         int w = 10;
         int h = 10;
         creatRandomRoomInAWorldGenerator(seed, w, h);
