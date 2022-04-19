@@ -31,6 +31,11 @@ public class WorldGenerator {
         cleanWorldWith(Tileset.NOTHING);
     }
 
+    public Random getRandom() {
+        return this.random;
+    }
+
+
     /**
      * TODO  COMPLETE THE randomBSPWorld method : use BSP ALGO to generator a random world
      */
@@ -59,6 +64,7 @@ public class WorldGenerator {
     public void addElements(Element e) {
         if (e == null) return;
         Map<Position, TETile> map = e.output();
+        if (map == null) return;
         for (Position p : map.keySet()) {
             world[p.getX()][p.getY()] = map.get(p);
         }
