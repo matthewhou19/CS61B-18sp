@@ -111,8 +111,6 @@ TETile t;
 * `public Position getKeyPoint(Random random);`
 * `public Map<Position, TETile> output();`
 
-
-
 ### class BinarySpacePartition
 
 #### private variable
@@ -133,7 +131,8 @@ private Random random;
 
 * `public BinarySpacePartition(Random random, int w, int h);`
 
-
 #### Others
 
-* `public List<Room> getAllRooms();`
+* `public void BSPGeneration(WorldGenerator wg);`
+* `private List<Room> getAllRooms();`
+* `private void createRooms();`

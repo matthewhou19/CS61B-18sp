@@ -14,7 +14,7 @@ public class Room implements Element{
     private final int height;
     private final TETile t;
     // every random room generation must have off = 2
-    private final static int off = 2;
+    private final static int off = 1;
 
     public Room(Position p, int width, int height) {
         this.p = p;
@@ -48,11 +48,14 @@ public class Room implements Element{
 
     // TODO
     public static Room randomRoom(Random random, Position sp, int w, int h)  {
-        if (w <= off * 3 || h <= off * 3) return null;
-        Position p = Position.randomPosition(random, sp.getX() + off, sp.getX() + w/2 - off, sp.getY() + off, sp.getY() + h/2 - off );
-        int width = RandomUtils.uniform(random, off, w - 2 * off - p.getX());
-        int hight = RandomUtils.uniform(random, off, h  - 2 * off - p.getY());
-        return new Room(p, width, hight);
+        if (w <= off || h <= off) return null;
+        int px = RandomUtils.uniform(random, w / 2);
+        int py = RandomUtils.uniform(random, h/ 2);
+        Position p = new Position(sp.getX() + px, sp.getY() + py);
+        int pw = RandomUtils.uniform(random, 1, w - px + 1);
+        int ph = RandomUtils.uniform(random, 1, h - py + 1);
+        return new Room(p, pw, ph);
+
     }
 
     public static Room randomRoom(Position sp, int w, int h) {

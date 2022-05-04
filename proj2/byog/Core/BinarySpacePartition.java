@@ -39,9 +39,22 @@ public class BinarySpacePartition {
 
     }
 
-    public void createRooms() {
+    public void BSPGeneration(WorldGenerator wg) {
+        this.createRooms();
+
+        List<Room> rooms = this.getAllRooms();
+
+        for (Room room : rooms) {
+            wg.addElements(room);
+        }
+
+    }
+
+
+    private void createRooms() {
         if (left == null && right == null) {
             room = new Room(new Position(p.getX() + 1, p.getY() + 1), width - 2 , hight - 2);
+            room = Room.randomRoom(random,new Position(p.getX() + 1, p.getY() + 1), width - 2 , hight - 2);
         }
 
         if (left != null) {
@@ -56,7 +69,7 @@ public class BinarySpacePartition {
 
 
 
-    public List<Room> getAllRooms() {
+    private List<Room> getAllRooms() {
         List<Room> ans = new ArrayList<>();
         if (left != null) {
             List<Room> leftRooms = left.getAllRooms();
@@ -80,24 +93,12 @@ public class BinarySpacePartition {
 
 
     public static void main(String[] args) {
-        long seed = 2210000;
+        long seed = 211210000;
         int w = 80;
         int h = 50;
-        Random random = new Random(seed);
-        /**
-        BinarySpacePartition bsp = new BinarySpacePartition(random, new Position(0, 0), w, h);
-        bsp.createRooms();
-        List<Room> listOfRooms = bsp.getAllRooms();
-        **/
 
         WorldGenerator wg = new WorldGenerator(seed, w, h);
         wg.randomBSPWorld();
-
-        /**
-        for (Room room : listOfRooms) {
-            wg.addElements(room);
-        }
-        */
 
         TETile[][] world = wg.outputWorld();
         TERenderer ter = new TERenderer();
