@@ -105,11 +105,15 @@ TETile t;
 
 * `public Path(Position p1, Position p2);`
 * `public Path(Position p1, Position p2, TETile t);`
+* `public Path(Position p1);`
 
 #### Others
 
 * `public Position getKeyPoint(Random random);`
 * `public Map<Position, TETile> output();`
+* `public Set<Position> toSet();`
+* `public void add(Position p);`
+* `public void add(Path path);`
 
 ### class BinarySpacePartition
 

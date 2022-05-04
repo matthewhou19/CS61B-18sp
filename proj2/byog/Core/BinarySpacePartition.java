@@ -48,6 +48,9 @@ public class BinarySpacePartition {
             wg.addElements(room);
         }
 
+        this.path = creatPath();
+        wg.addElements(this.path);
+
     }
 
 
@@ -95,7 +98,26 @@ public class BinarySpacePartition {
             if (this.room == null) {
                 return null;
             }
-            return
+            return new Path(this.room.getPosition());
+        }
+
+        Path leftPath = null;
+        Path rightPath = null;
+        if (this.left != null) {
+            leftPath = this.left.creatPath();
+        }
+        if (this.right != null) {
+            rightPath = this.right.creatPath();
+        }
+        if (leftPath == null) {
+            return rightPath;
+        } else if (rightPath == null) {
+            return leftPath;
+        } else  {
+            Path path = new Path(random, leftPath.getKeyPoint(random), rightPath.getKeyPoint(random));
+            path.add(leftPath);
+            path.add(rightPath);
+            return path;
         }
     }
 
