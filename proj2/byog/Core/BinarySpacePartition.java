@@ -90,6 +90,15 @@ public class BinarySpacePartition {
         return ans;
     }
 
+    private Path creatPath() {
+        if (this.left == null && this.right == null) {
+            if (this.room == null) {
+                return null;
+            }
+            return
+        }
+    }
+
 
 
     public static void main(String[] args) {

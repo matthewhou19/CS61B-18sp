@@ -19,6 +19,13 @@ public class Path implements Element{
         buildPath(random, p1, p2);
     }
 
+    public Path(Position p1) {
+        this.t = Tileset.FLOOR;
+        this.set = new HashSet<>();
+        this.set.add(p1);
+    }
+
+
     private void buildPath(Random random, Position p1, Position p2) {
         set = new HashSet<>();
         if (p1 == null) return;
@@ -76,6 +83,8 @@ public class Path implements Element{
     }
 
 
+
+
     public Position getKeyPoint(Random random) {
         if (this.set == null || this.set.size() == 0) return null;
         int k = RandomUtils.uniform(random, this.set.size());
@@ -88,6 +97,23 @@ public class Path implements Element{
         }
         return null;
     }
+
+    public Set<Position> toSet() {
+        return set;
+    }
+
+
+    public void add(Position p) {
+        this.set.add(p);
+    }
+
+    public void add(Path path) {
+        Set<Position> set1 = path.toSet();
+        for (Position p : set1) {
+            this.set.add(p);
+        }
+    }
+
 
 
     @Override

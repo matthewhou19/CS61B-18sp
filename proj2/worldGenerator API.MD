@@ -110,6 +110,9 @@ TETile t;
 
 * `public Position getKeyPoint(Random random);`
 * `public Map<Position, TETile> output();`
+* `public Set<Position> toSet();`
+* `public void add(Position p);`
+* `public void add(Path path);`
 
 ### class BinarySpacePartition
 
