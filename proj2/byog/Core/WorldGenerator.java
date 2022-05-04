@@ -43,6 +43,7 @@ public class WorldGenerator {
 
     public void randomBSPWorld() {
         BinarySpacePartition bsp = new BinarySpacePartition(random, new Position(0, 0), width, height);
+        bsp.createRooms();
         List<Room> listOfRooms = bsp.getAllRooms();
         for (Room room : listOfRooms) {
             addElements(room);
