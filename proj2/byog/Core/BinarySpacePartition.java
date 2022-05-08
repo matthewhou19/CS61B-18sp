@@ -47,7 +47,6 @@ public class BinarySpacePartition {
         for (Room room : rooms) {
             wg.addElements(room);
         }
-
         this.path = creatPath();
         wg.addElements(this.path);
 
@@ -56,8 +55,15 @@ public class BinarySpacePartition {
 
     private void createRooms() {
         if (left == null && right == null) {
-            room = new Room(new Position(p.getX() + 1, p.getY() + 1), width - 2 , hight - 2);
-            //room = Room.randomRoom(random,new Position(p.getX() + 1, p.getY() + 1), width - 2 , hight - 2);
+            //room = new Room(new Position(p.getX() + 1, p.getY() + 1), width - 2 , hight - 2);
+            room = Room.randomRoom(random,new Position(p.getX() + 1, p.getY() + 1), width - 2 , hight - 2);
+            if (room != null) {
+                int sq = room.getArea();
+                if (sq <=4) {
+                    room = null;
+                }
+            }
+
         }
 
         if (left != null) {
@@ -124,7 +130,7 @@ public class BinarySpacePartition {
 
 
     public static void main(String[] args) {
-        long seed = 1110000;
+        long seed = 231110000;
         int w = 80;
         int h = 50;
 

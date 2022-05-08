@@ -42,8 +42,29 @@ public class WorldGenerator {
 
 
     public void randomBSPWorld() {
-        BinarySpacePartition bsp = new BinarySpacePartition(random, new Position(0, 0), width, height);
+        BinarySpacePartition bsp = new BinarySpacePartition(random, new Position(1, 1), width - 2  , height - 2 );
         bsp.BSPGeneration(this);
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                if (world[i][j] == Tileset.NOTHING) {
+                    if (i - 1 >= 0 && world[i - 1][j] == Tileset.FLOOR) {
+                        world[i][j] = Tileset.WALL;
+                    }
+                    if (i + 1 < width && world[i + 1][j] == Tileset.FLOOR) {
+                        world[i][j] = Tileset.WALL;
+                    }
+                    if (j - 1 >= 0 && world[i][j - 1] == Tileset.FLOOR) {
+                        world[i][j] = Tileset.WALL;
+                    }
+                    if (j + 1 < height && world[i][j + 1] == Tileset.FLOOR) {
+                        world[i][j] = Tileset.WALL;
+                    }
+
+                }
+            }
+        }
+
+
     }
 
 

@@ -46,6 +46,7 @@ public class Room implements Element{
         return height * width;
     }
 
+
     // TODO
     public static Room randomRoom(Random random, Position sp, int w, int h)  {
         if (w <= off || h <= off) return null;

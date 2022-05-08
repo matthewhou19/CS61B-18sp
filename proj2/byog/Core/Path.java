@@ -81,7 +81,7 @@ public class Path implements Element{
                     set.add(np);
                     oy = oy + diffy / h;
                 }
-                for (int i = 0; i < w + 1; i++) {
+                for (int i = 0; i < w ; i++) {
                     Position np = new Position(ox, oy);
                     set.add(np);
                     ox = ox + diffx / w;
@@ -142,10 +142,10 @@ public class Path implements Element{
     public static void main(String[] args) {
         long seed = 210000;
         int w = 50;
-        int h = 70;
-        Position p1 = new Position( 1, 1);
-        Position p2 = new Position(40, 60);
-        Position p3 = new Position(5, 65);
+        int h = 60;
+        Position p1 = new Position( 5, 55);
+        Position p2 = new Position(40, 50);
+        Position p3 = new Position(4, 3);
 
 
         Path path1 = new Path(new Random(), p1, p2);
