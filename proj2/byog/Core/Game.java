@@ -78,11 +78,12 @@ public class Game {
 
         WorldGenerator wg = new WorldGenerator(seed, WIDTH, HEIGHT);
 
-        TETile[][] finalWorldFrame = wg.outputWorld();
+
 
         wg.randomBSPWorld();
 
-        finalWorldFrame = wg.outputWorld();
+
+        TETile[][] finalWorldFrame = wg.outputWorld();
 
 
         return finalWorldFrame;
