@@ -7,6 +7,9 @@ public class Position {
     private final int y;
 
     public Position(int x, int y) {
+        if (x < 0 || y < 0) {
+            throw new IllegalArgumentException("a position must not less than 0");
+        }
         this.x = x;
         this.y = y;
     }
@@ -16,7 +19,7 @@ public class Position {
     }
 
     public int getY() {
-        return y;
+        return this.y;
     }
 
     public static Position randomPosition(Random random, int x1, int x2, int y1, int y2) {
@@ -33,6 +36,13 @@ public class Position {
     }
 
     public static Position randomPosition(int x1, int x2, int y1, int y2) {
+        if (x1 < 0) {
+            throw new IllegalArgumentException("a position must not less than 0");
+        }
+        if (y1 < 0) {
+            throw new IllegalArgumentException("a position must not less than 0");
+        }
+
         Random r = new Random();
         return randomPosition(r, x1, x2, y1, y2);
     }

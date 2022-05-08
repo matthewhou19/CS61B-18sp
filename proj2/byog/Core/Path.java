@@ -34,6 +34,20 @@ public class Path implements Element{
         } else {
             int w = Math.abs(p1.getX() - p2.getX());
             int h = Math.abs(p1.getY() - p2.getY());
+            if (w == 0) {
+                for (int i = 0; i < h + 1; i++) {
+                    set.add(new Position(p1.getX(), p1.getY() - i * (p1.getY() - p2.getY()) / h));
+                }
+
+                return;
+            }
+            if (h == 0) {
+                for (int i = 0; i < 2 + 1; i++) {
+                    set.add(new Position(p1.getX() - i * (p1.getX() - p2.getX()) / w, p1.getY() ));
+                }
+
+                return;
+            }
             int diffx = p2.getX() - p1.getX();
             int diffy = p2.getY() - p1.getY();
             int ox = p1.getX();
@@ -47,7 +61,7 @@ public class Path implements Element{
                     ox = ox + diffx / w;
                 }
 
-                for (int i = 0; i < h + 1; i++) {
+                for (int i = 0; i < h; i++) {
                     Position np = new Position(ox, oy);
                     set.add(np);
                     oy = oy + diffy / h;
@@ -126,7 +140,7 @@ public class Path implements Element{
     }
 
     public static void main(String[] args) {
-        long seed = 2210000;
+        long seed = 210000;
         int w = 50;
         int h = 70;
         Position p1 = new Position( 1, 1);

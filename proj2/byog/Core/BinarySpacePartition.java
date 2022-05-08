@@ -57,7 +57,7 @@ public class BinarySpacePartition {
     private void createRooms() {
         if (left == null && right == null) {
             room = new Room(new Position(p.getX() + 1, p.getY() + 1), width - 2 , hight - 2);
-            room = Room.randomRoom(random,new Position(p.getX() + 1, p.getY() + 1), width - 2 , hight - 2);
+            //room = Room.randomRoom(random,new Position(p.getX() + 1, p.getY() + 1), width - 2 , hight - 2);
         }
 
         if (left != null) {
@@ -124,7 +124,7 @@ public class BinarySpacePartition {
 
 
     public static void main(String[] args) {
-        long seed = 211210000;
+        long seed = 1110000;
         int w = 80;
         int h = 50;
 
