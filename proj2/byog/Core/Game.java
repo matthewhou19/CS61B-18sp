@@ -1,22 +1,70 @@
 package byog.Core;
 
+import byog.SaveDemo.World;
+import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
+import edu.princeton.cs.introcs.StdDraw;
 
 
+import java.awt.*;
 import java.util.Random;
 
 public class Game {
 
     /* Feel free to change the width and height. */
     public static final int WIDTH = 80;
-    public static final int HEIGHT = 60;
-    public static final int seed = 3567;
+    public static final int HEIGHT = 50;
+    public static final int offX = 2;
+    public static final int offY = 6;
+
+    private   int seed;
 
     /**
      * Method used for playing a fresh game. The game should start from the main menu.
      */
     public void playWithKeyboard() {
-        Random random = new Random(3567);
+        TERenderer ter = new TERenderer();
+        ter.initialize(WIDTH + offX , HEIGHT + offY);
+        int heading1Hight = HEIGHT - (HEIGHT + offY) / 5;
+        int midHight = (HEIGHT + offY) / 2;
+        int midWidth =(WIDTH + offX) / 2;
+
+        Font smallFont = new Font("Monaco", Font.BOLD, 20);
+        Font bigFont = new Font("Monaco", Font.BOLD, 30);
+
+        StdDraw.setFont(bigFont);
+        StdDraw.setPenColor(Color.WHITE);
+        StdDraw.text(midWidth, heading1Hight, "CS61B : THE GAME");
+
+        StdDraw.setFont(smallFont);
+        int optionHight = midHight;
+        StdDraw.text(midWidth, optionHight--, "New Game (N)");
+        optionHight--;
+        StdDraw.text(midWidth, optionHight--, "Load Game (L)");
+        optionHight--;
+        StdDraw.text(midWidth, optionHight, "New Game (Q)");
+
+        StdDraw.show();
+
+        while (!StdDraw.hasNextKeyTyped()) {
+
+        }
+        char key = StdDraw.nextKeyTyped();
+
+        if (key == 'N') {
+            WorldGenerator wg = new WorldGenerator(seed, WIDTH, HEIGHT);
+            wg.randomBSPWorld();
+            TETile[][] finalWorldFrame = wg.outputWorld();
+            StdDraw.clear(Color.BLACK);
+            ter.renderFrame(finalWorldFrame);
+        }
+
+
+
+
+
+
+
 
 
 
