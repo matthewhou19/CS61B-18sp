@@ -13,18 +13,24 @@ public class Game {
 
     /* Feel free to change the width and height. */
     public static final int WIDTH = 80;
-    public static final int HEIGHT = 50;
-    public static final int offX = 2;
+    public static final int HEIGHT = 45;
+    public static final int offX = 4;
     public static final int offY = 6;
 
-    private   int seed;
+    private static int xOff = 1;
+
+    private static int yOff = 1;
+
+    private   long seed = 0;
 
     /**
      * Method used for playing a fresh game. The game should start from the main menu.
      */
     public void playWithKeyboard() {
         TERenderer ter = new TERenderer();
-        ter.initialize(WIDTH + offX , HEIGHT + offY);
+        ter.initialize(WIDTH + offX , HEIGHT + offY, xOff, yOff);
+        //StdDraw.setCanvasSize((WIDTH + offX) *16, (HEIGHT + offY) * 16);
+        //StdDraw.clear(Color.BLACK);
         int heading1Hight = HEIGHT - (HEIGHT + offY) / 5;
         int midHight = (HEIGHT + offY) / 2;
         int midWidth =(WIDTH + offX) / 2;
@@ -51,36 +57,68 @@ public class Game {
         }
         char key = StdDraw.nextKeyTyped();
 
-        if (key == 'N') {
+        if (key == 'N' || key == 'n') {
+            showSeed();
+
+
+            getSeed();
             WorldGenerator wg = new WorldGenerator(seed, WIDTH, HEIGHT);
             wg.randomBSPWorld();
             TETile[][] finalWorldFrame = wg.outputWorld();
             StdDraw.clear(Color.BLACK);
+            
             ter.renderFrame(finalWorldFrame);
+            trackMouse(finalWorldFrame);
         }
 
+    }
+
+    private void getSeed() {
+
+        while (!StdDraw.hasNextKeyTyped()) {
+        }
+        char c = StdDraw.nextKeyTyped();
+        if (c == 's' || c == 'S') return;
+        if (c < '0' || c > '9') {
+            getSeed();
+            return;
+        }
+
+        seed = seed * 10 + (c - '0');
+
+        showSeed();
+        getSeed();
+    }
+
+    private void showSeed() {
+        StdDraw.clear(Color.BLACK);
+        Font bigFont = new Font("Monaco", Font.BOLD, 30);
+
+        StdDraw.setFont(bigFont);
+        StdDraw.setPenColor(Color.WHITE);
+        int midHight = (HEIGHT + offY) / 2;
+        int midWidth =(WIDTH + offX) / 2;
+        StdDraw.text(midWidth, midHight, String.valueOf(seed));
+        StdDraw.show();
+    }
+
+    private void trackMouse(TETile[][] finalWorldFrame) {
+        while (true) {
+            double x = StdDraw.mouseX();
+            double y = StdDraw.mouseY();
+            if (x < WIDTH && x >= 0 && y < HEIGHT && y >= 0) {
+                String s = finalWorldFrame[(int) x + xOff][(int) y + yOff].description();
+                Font bigFont = new Font("Monaco", Font.BOLD, 30);
+
+                StdDraw.setFont(bigFont);
+                StdDraw.setPenColor(Color.WHITE);
+                StdDraw.text((WIDTH + offX) * 4/5 ,HEIGHT + offY - 1, s);
+                StdDraw.show();
+
+            }
 
 
-
-
-
-
-
-
-
-
-
-
-        // initialize tiles
-
-
-
-
-
-
-
-        // draws the world to the screen
-
+        }
     }
 
 
