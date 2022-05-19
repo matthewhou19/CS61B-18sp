@@ -40,6 +40,8 @@ public class Game {
 
     private String pointer = "NOTHING";
 
+    private StringBuilder st = new StringBuilder();
+
 
 
 
@@ -60,16 +62,52 @@ public class Game {
                 if (key != 'N' & key != 'n' & key != 'L' && key != 'l' & key != 'Q' && key != 'q' ) {
                     continue;
                 } else {
+
                     beginning = false;
                     if (key == 'N' || key == 'n') {
                         gameStart = true;
                         showSeed();
                         getSeed();
+                        st.append(String.valueOf(seed));
+                        st.append('S');
                         WorldGenerator wg = new WorldGenerator(seed, WIDTH, HEIGHT);
                         wg.randomBSPWorld();
                         finalWorldFrame = wg.outputWorld();
                         locatePlayer();
                     }
+                    if (key == 'q' || key == 'Q') {
+                        beginning = false;
+                        System.exit(0);
+                    }
+
+                    if (key == 'l' || key == 'L') {
+                        beginning = false;
+                        String s = GameSaver.load();
+                        long a = 0;
+                        int i;
+                        for ( i = 0; i < s.length(); i++) {
+                            char c = s.charAt(i);
+                            if (c != 's' || c != 'S') {
+                                a = a * 10 + (c - '0');
+                            } else {
+                                seed = a;
+                                break;
+                            }
+                        }
+                        WorldGenerator wg = new WorldGenerator(seed, WIDTH, HEIGHT);
+                        wg.randomBSPWorld();
+                        finalWorldFrame = wg.outputWorld();
+                        locatePlayer();
+                        i++;
+
+                        for ( i = 0; i < s.length(); i++) {
+                            char c = s.charAt(i);
+                            keyPress(c);
+                        }
+                        gameStart = true;
+                    }
+
+
                 }
             }
 
@@ -91,8 +129,13 @@ public class Game {
         if (StdDraw.hasNextKeyTyped()) {
             char c = StdDraw.nextKeyTyped();
             for (char a : KEYS) {
+                if (c == 'q' || c == 'Q') {
+                    GameSaver.save(st.toString());
+                    System.exit(0);
+                }
                 if (a == c) {
                     keyPress(a);
+
                 }
             }
         }
@@ -117,18 +160,21 @@ public class Game {
             if (!walkable(playerX, playerY + 1)){
                 return;
             }
+            st.append(a);
             walk(playerX, playerY + 1);
         }
         if (a == 'd' || a == 'D') {
             if (!walkable(playerX + 1, playerY)){
                 return;
             }
+            st.append(a);
             walk(playerX + 1, playerY);
         }
         if (a == 'A' || a == 'a') {
             if (!walkable(playerX - 1, playerY)){
                 return;
             }
+            st.append(a);
             walk(playerX - 1, playerY);
         }
 
@@ -136,8 +182,11 @@ public class Game {
             if (!walkable(playerX, playerY - 1)){
                 return;
             }
+            st.append(a);
             walk(playerX, playerY - 1);
         }
+
+
 
 
     }
