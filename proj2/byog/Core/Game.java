@@ -83,24 +83,30 @@ public class Game {
                     if (key == 'l' || key == 'L') {
                         beginning = false;
                         String s = GameSaver.load();
+                        System.out.println(s);
                         long a = 0;
-                        int i;
-                        for ( i = 0; i < s.length(); i++) {
+                        int j = 0;
+                        for (int i = 0; i < s.length(); i++) {
                             char c = s.charAt(i);
-                            if (c != 's' || c != 'S') {
+                            if ((c - '0') >= 0 && (c -'9') <= 0) {
                                 a = a * 10 + (c - '0');
-                            } else {
+                            }
+                            if (c == 'S') {
                                 seed = a;
+                                j = i;
                                 break;
                             }
                         }
+
+                        st.append(String.valueOf(seed));
+                        st.append('S');
                         WorldGenerator wg = new WorldGenerator(seed, WIDTH, HEIGHT);
                         wg.randomBSPWorld();
                         finalWorldFrame = wg.outputWorld();
                         locatePlayer();
-                        i++;
+                        System.out.println(j);
 
-                        for ( i = 0; i < s.length(); i++) {
+                        for (int i = j ; i < s.length(); i++) {
                             char c = s.charAt(i);
                             keyPress(c);
                         }
