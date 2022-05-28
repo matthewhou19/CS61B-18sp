@@ -104,7 +104,7 @@ public class Game {
                         wg.randomBSPWorld();
                         finalWorldFrame = wg.outputWorld();
                         locatePlayer();
-                        System.out.println(j);
+                        //System.out.println(j);
 
                         for (int i = j ; i < s.length(); i++) {
                             char c = s.charAt(i);
@@ -319,9 +319,11 @@ public class Game {
             throw new IllegalArgumentException("Input string must start with character N or n !");
         }
         long seed = 0;
+        int j = 0;
         for (int i = 1; i < input.length(); i++) {
             char c = input.charAt(i);
             if (c == 's' || c == 'S') {
+                j = i;
                 break;
             } else if (c <= '9' && c >= '0') {
                 seed = seed * 10 + (c - '0');
@@ -329,6 +331,7 @@ public class Game {
                 throw new IllegalArgumentException("Input must be a string of the format “N#######S” !");
             }
         }
+
 
 
         System.out.println(seed);
@@ -340,7 +343,15 @@ public class Game {
         wg.randomBSPWorld();
 
 
-        TETile[][] finalWorldFrame = wg.outputWorld();
+        finalWorldFrame = wg.outputWorld();
+        locatePlayer();
+        j++;
+        for (int i = j ; i < input.length(); i++) {
+            char c = input.charAt(i);
+            keyPress(c);
+        }
+
+
 
 
         return finalWorldFrame;
