@@ -3,12 +3,12 @@ package hw2;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
-    int[][] grid;
-    int size;
-    WeightedQuickUnionUF uf;
-    final static  int blocked = 0;
-    final  static int open = 1;
-    int count;
+    private int[][] grid;
+    private int size;
+    private WeightedQuickUnionUF uf;
+    private final static  int blocked = 0;
+    private final  static int open = 1;
+    private int count;
 
 
     public Percolation(int N) {

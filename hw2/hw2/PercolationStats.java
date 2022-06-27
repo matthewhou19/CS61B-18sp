@@ -6,7 +6,7 @@ import edu.princeton.cs.algs4.StdStats;
 import java.util.Map;
 
 public class PercolationStats {
-    int[] data;
+    private int[] data;
     public PercolationStats(int N, int T, PercolationFactory pf) {
         data = new int[T];
         for (int i = 0 ; i < T; i++) {

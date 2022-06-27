@@ -49,6 +49,7 @@ public class InteractivePercolationVisualizer {
                 if (i >= 0 && i < N && j >= 0 && j < N) {
                     if (!perc.isOpen(i, j)) {
                         StdOut.println(i + " " + j);
+                        StdOut.println(perc.percolates());
                     }
                     perc.open(i, j);
                 }
