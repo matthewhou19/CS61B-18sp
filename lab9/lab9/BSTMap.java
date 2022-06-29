@@ -130,8 +130,21 @@ public class BSTMap<K extends Comparable<K>, V> implements lab9.Map61B<K, V> {
 
     private Node removeHelper(K key, Node root) {
         if (root.key.equals(key)) {
-            size--;
-            return null;
+
+            if (root.left == null && root.left == null) {
+                size--;
+                return null;
+            } else if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            } else {
+                Node nextMax = findNextMax(root.right);
+                root.value = nextMax.value;
+                root.key = nextMax.key;
+                nextMax.key = key;
+                root.right = removeHelper(key, root.right);
+            }
         }
         if (root.key.compareTo(key) > 0) {
             root.left = removeHelper(key, root.left);
@@ -140,6 +153,15 @@ public class BSTMap<K extends Comparable<K>, V> implements lab9.Map61B<K, V> {
         }
         return root;
     }
+
+    private Node findNextMax(Node root) {
+        while (root.left != null) {
+            root = root.left;
+        }
+        return root;
+    }
+
+
 
     /** Removes the key-value entry for the specified key only if it is
      *  currently mapped to the specified value.  Returns the VALUE removed,
