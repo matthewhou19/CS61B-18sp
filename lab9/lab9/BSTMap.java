@@ -124,7 +124,7 @@ public class BSTMap<K extends Comparable<K>, V> implements lab9.Map61B<K, V> {
     public V remove(K key) {
         V value = get(key);
         if (value == null) return value;
-        root = removeHelper(key, root);
+        this. root = removeHelper(key, this.root);
         return value;
     }
 
