@@ -18,8 +18,8 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     private ArrayMap<K, V>[] buckets;
     private int size;
 
-    private int loadFactor() {
-        return size / buckets.length;
+    private double loadFactor() {
+        return size * 1.0 / buckets.length;
     }
 
     public MyHashMap() {
@@ -69,9 +69,18 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         int h = hash(key);
         buckets[h].put(key, value);
 
-
-
-
+        if (loadFactor() > MAX_LF) {
+            ArrayMap<K, V>[] newBuckets = new ArrayMap[buckets.length * 2];
+            for (int i = 0; i < newBuckets.length; i += 1) {
+                newBuckets[i] = new ArrayMap<>();
+            }
+            for (K k : keySet()) {
+                V v = get(k);
+                int numBuckets = newBuckets.length;
+                int hk = Math.floorMod(k.hashCode(), numBuckets);
+                newBuckets[hk].put(k, v);
+            }
+        }
     }
 
     /* Returns the number of key-value mappings in this map. */
@@ -105,6 +114,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         int h = hash(key);
         buckets[h].remove(key);
         size--;
+
         return o;
     }
 
