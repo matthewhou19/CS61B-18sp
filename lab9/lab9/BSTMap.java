@@ -159,7 +159,7 @@ public class BSTMap<K extends Comparable<K>, V> implements lab9.Map61B<K, V> {
 
     @Override
     public Iterator<K> iterator() {
-        throw new KeyIterator(root);
+        return new KeyIterator(root);
     }
 
     public class KeyIterator implements Iterator<K> {
