@@ -72,12 +72,15 @@ public class Board implements WorldState{
         int count = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
+                if (tileAt(i, j) == 0) {
+                    continue;
+                }
                 if (tileAt(i, j) != oughToBe(i, j)) {
                     count++;
                 }
             }
         }
-        if (count != 0) return  count - 1;
+        if (count != 0) return  count;
         return 0;
     }
     public int manhattan() {
@@ -88,17 +91,24 @@ public class Board implements WorldState{
                 if (tile == 0) {
                     continue;
                 }
-                int distance = Math.abs(tile - oughToBe(i, j));
-                count = count + distance / size + distance % size;
+                int x = (tile - 1) / size;
+                int y = (tile - 1) % size;
+
+                count = count + Math.abs(x - i) + Math.abs(y - j);
             }
         }
         return count;
     }
+
+
+
     public int estimatedDistanceToGoal() {
         return manhattan();
     }
     public boolean equals(Object y) {
+        if (y == null) return false;
         if (y == this) return true;
+
         if (y.getClass() != this.getClass()) return false;
         if ((((Board) y).size() != size())) return false;
         for (int i = 0; i < size; i++) {
