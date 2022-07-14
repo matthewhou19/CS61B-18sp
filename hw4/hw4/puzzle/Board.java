@@ -11,7 +11,12 @@ public class Board implements WorldState{
 
     public Board(int[][] tiles) {
         size = tiles.length;
-        this.tiles = tiles;
+        this.tiles = new int[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                this.tiles[i][j] = tiles[i][j];
+            }
+        }
     }
     public int tileAt(int i, int j) {
         if (i < 0 || j < 0 || i > size - 1 || j > size - 1) {
