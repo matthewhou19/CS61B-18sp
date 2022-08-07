@@ -1,5 +1,7 @@
 import edu.princeton.cs.algs4.Queue;
 
+import java.util.concurrent.locks.AbstractQueuedLongSynchronizer;
+
 public class QuickSort {
     /**
      * Returns a new queue that contains the given queues catenated together.
@@ -72,8 +74,8 @@ public class QuickSort {
         Queue<Item> eqaul = new Queue<>();
         Queue<Item> greater = new Queue<>();
         partition(items, pivot, less, eqaul, greater);
-        quickSort(less);
-        quickSort(greater);
+        less =quickSort(less);
+        greater = quickSort(greater);
         less = catenate(less, eqaul);
         less = catenate(less, greater);
         return less;
