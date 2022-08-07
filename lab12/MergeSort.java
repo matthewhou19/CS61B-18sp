@@ -35,7 +35,13 @@ public class MergeSort {
     private static <Item extends Comparable> Queue<Queue<Item>>
             makeSingleItemQueues(Queue<Item> items) {
         // Your code here!
-        return null;
+        Queue<Queue<Item>> res = new Queue<>();
+        for (Item element : items) {
+            Queue<Item> q = new Queue<>();
+            q.enqueue(element);
+            res.enqueue(q);
+        }
+        return res;
     }
 
     /**
@@ -53,14 +59,59 @@ public class MergeSort {
      */
     private static <Item extends Comparable> Queue<Item> mergeSortedQueues(
             Queue<Item> q1, Queue<Item> q2) {
+        Queue<Item> res = new Queue<>();
+        while (!q1.isEmpty() || !q2.isEmpty()) {
+            Item element = getMin(q1, q2);
+            res.enqueue(element);
+        }
         // Your code here!
-        return null;
+        return res;
     }
 
     /** Returns a Queue that contains the given items sorted from least to greatest. */
     public static <Item extends Comparable> Queue<Item> mergeSort(
             Queue<Item> items) {
+        if (items == null) return null;
+        if (items.isEmpty() ) {
+            return new Queue<Item>();
+        }
         // Your code here!
-        return items;
+        Queue<Queue<Item>> q = makeSingleItemQueues(items);
+        while (q.size() != 1) {
+            Queue<Item> q1 = q.dequeue();
+            Queue<Item> q2 = q.dequeue();
+            Queue<Item> sortedQ = mergeSortedQueues(q1, q2);
+            q.enqueue(sortedQ);
+        }
+
+
+
+        return q.dequeue();
     }
+
+    public static void main(String[] args) {
+        Queue<String> letters = new Queue<String>();
+        letters.enqueue("xxbc");
+        letters.enqueue("ffg");
+        letters.enqueue("mmc");
+        letters.enqueue("bbc");
+        letters.enqueue("aab");
+        letters.enqueue("ddc");
+        letters.enqueue("ppo");
+        letters.enqueue("llg");
+        letters.enqueue("eec");
+        letters.enqueue("ccac");
+        letters.enqueue("iic");
+
+
+        System.out.println(letters);
+
+        Queue<String>sorted_Queue = MergeSort.mergeSort(letters);
+
+        System.out.println(letters);
+        System.out.println(sorted_Queue);
+    }
+
+
+
 }

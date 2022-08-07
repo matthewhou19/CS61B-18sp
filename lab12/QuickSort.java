@@ -47,6 +47,17 @@ public class QuickSort {
     private static <Item extends Comparable> void partition(
             Queue<Item> unsorted, Item pivot,
             Queue<Item> less, Queue<Item> equal, Queue<Item> greater) {
+
+        for (Item item : unsorted) {
+            int compare = item.compareTo(pivot);
+            if (compare < 0) {
+                less.enqueue(item);
+            } else if (compare > 0) {
+                greater.enqueue(item);
+            } else {
+                equal.enqueue(item);
+            }
+        }
         // Your code here!
     }
 
@@ -54,6 +65,41 @@ public class QuickSort {
     public static <Item extends Comparable> Queue<Item> quickSort(
             Queue<Item> items) {
         // Your code here!
-        return items;
+        if (items == null ) return null;
+        if (items.isEmpty() || items.size() == 1) return items;
+        Item pivot = getRandomItem(items);
+        Queue<Item> less = new Queue<>();
+        Queue<Item> eqaul = new Queue<>();
+        Queue<Item> greater = new Queue<>();
+        partition(items, pivot, less, eqaul, greater);
+        quickSort(less);
+        quickSort(greater);
+        less = catenate(less, eqaul);
+        less = catenate(less, greater);
+        return less;
+    }
+
+
+    public static void main(String[] args) {
+        Queue<String> letters = new Queue<String>();
+        letters.enqueue("xxbc");
+        letters.enqueue("ffg");
+        letters.enqueue("mmc");
+        letters.enqueue("bbc");
+        letters.enqueue("aab");
+        letters.enqueue("ddc");
+        letters.enqueue("ppo");
+        letters.enqueue("llg");
+        letters.enqueue("eec");
+        letters.enqueue("ccac");
+        letters.enqueue("iic");
+
+
+        System.out.println(letters);
+
+        Queue<String>sorted_Queue = QuickSort.quickSort(letters);
+
+        System.out.println(letters);
+        System.out.println(sorted_Queue);
     }
 }
