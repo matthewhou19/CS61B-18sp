@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.LSD;
+
 /**
  * Class for doing Radix sort
  *
@@ -17,7 +19,19 @@ public class RadixSort {
      */
     public static String[] sort(String[] asciis) {
         // TODO: Implement LSD Sort
-        return null;
+        return LSDsort(asciis);
+    }
+
+    private static String[] LSDsort(String[] strs) {
+        String[] res = new String[strs.length];
+        int maxW = 0;
+        int index = 0;
+        for (String str : strs) {
+            maxW = Math.max(maxW, str.length());
+            res[index++] = str;
+        }
+        sortHelperLSD(res, maxW - 1);
+        return res;
     }
 
     /**
@@ -27,8 +41,35 @@ public class RadixSort {
      * @param index The position to sort the Strings on.
      */
     private static void sortHelperLSD(String[] asciis, int index) {
-        // Optional LSD helper method for required LSD radix sort
-        return;
+        if (index < 0) return;
+        int[] counts = new int[257];
+        for (String str : asciis) {
+            counts[getBucket(str, index)] += 1;
+        }
+        int start = 0;
+        int[] starts = new int[257];
+        for (int i = 0; i < starts.length; i++) {
+            starts[i] = start;
+            start = start + counts[i];
+        }
+
+        String[] res = new String[asciis.length];
+        for (String str : asciis) {
+            int bucket = getBucket(str, index);
+            res[starts[bucket]] = str;
+            starts[bucket] += 1;
+        }
+
+        for (int i = 0; i < asciis.length;i++) {
+            asciis[i] = res[i];
+        }
+        
+        sortHelperLSD(asciis, index - 1);
+    }
+
+    private static int getBucket(String str, int index) {
+        if (index >= str.length()) return 256;
+        return (int)str.charAt(index);
     }
 
     /**
